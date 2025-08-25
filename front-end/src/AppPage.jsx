@@ -5,11 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import { CustomerList } from './CustomerList.jsx';
 import { CustomerAddUpdateForm } from './CustomerAddUpdateForm.jsx';
 import { Account } from './Account.jsx';
+import './AppPage.css';
 
 export function App(props) {
   let blankCustomer = { "id": -1, "name": "", "email": "", "password": "" };
   const [customers, setCustomers] = useState([]);
   const [formObject, setFormObject] = useState(blankCustomer);
+  const [searchQuery, setSearchQuery] = useState("");
   
   let mode = (formObject.id >= 0) ? 'Update' : 'Add';
 
@@ -73,11 +75,38 @@ export function App(props) {
     onCancelClick: onCancelClick
   }
 
-  return ( 
+  // Filter customers based on search query
+  const filteredCustomers = customers.filter((customer) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      customer.name.toLowerCase().includes(query) ||
+      customer.email.toLowerCase().includes(query) ||
+      String(customer.id).includes(query)
+    );
+  });
+
+  return (
     <div>
-      <Account username={props.username} setUsername={props.setUsername}  />
+      <h2 className="dashboard-header">Customer Management Dashboard</h2>
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by name, ID, or email..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-input"
+        />
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <button
+          className="add-button"
+          onClick={() => navigate('/addcustomer')}
+        >
+          Add Customer
+        </button>
+      </div>
       <CustomerList
-        customers={customers}
+        customers={filteredCustomers}
         formObject={formObject}
         handleListClick={handleListClick}
       />

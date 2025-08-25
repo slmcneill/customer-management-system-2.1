@@ -36,10 +36,11 @@ export function LoginForm(props) {
   }
 
   return (
-    <form className='boxed'>
-      <h3>Login</h3>
+    <form className='login'>
+      <h4>Sign In</h4>
       {/* <p>Please enter your username and password to continue.</p>             */}
 
+    
       Username:<br />
       <input type="text" name="username"
         value={formData.username}

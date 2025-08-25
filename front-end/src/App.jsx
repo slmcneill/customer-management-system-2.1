@@ -4,6 +4,8 @@ import './App.css';
 import { LoginForm } from './LoginForm.jsx';
 import { RegisterForm } from './RegisterForm.jsx';
 import AppPage from './AppPage.jsx';
+import AddCustomerPage from './AddCustomerPage.jsx';
+import Banner from './banner.jsx';
 
 export function App(params) {
 
@@ -11,10 +13,12 @@ export function App(params) {
 
   return (
     <BrowserRouter>
+      <Banner username={username} setUsername={setUsername} />
       <Routes>
         <Route path="/login" element={<LoginForm username={username} setUsername={setUsername} />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/app" element={<AppPage username={username} setUsername={setUsername} />} />
+        <Route path="/addcustomer" element={<AddCustomerPage />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>

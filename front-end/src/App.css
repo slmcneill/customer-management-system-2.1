@@ -1,3 +1,15 @@
+#root {
+  max-width: 1280px;
+  margin: 0;
+}
+
+body {
+  background-color: white;
+  width: 100%;
+  display:flex;
+  margin:0px;
+}
+
 h3 {
     margin: 0px;
     padding: 5px;
@@ -21,7 +33,7 @@ h5 {
     font-weight: normal;
     padding-bottom:0px;
 }
-table {
+ .boxed table {
     margin: 5px;
     background-color: white;
     font-family: monospace;
@@ -31,15 +43,15 @@ td input[type='text'], td input[type='email']{
     width: 95%;
 }
 
-table,
-td,
-tr {
+ .boxed table,
+ .boxed td,
+ .boxed tr {
     border: 1.3px solid #aaa;
     border-collapse: collapse;
     padding: 3px;
 }
 
-th {
+ .boxed th {
     background-color: lightgrey;
     font-weight: normal;
     border: 1px #aaa solid;
@@ -50,15 +62,15 @@ form{
 }
 
 div#root {
-    background-color: lightgrey;
-    width: 350px;
+    background-color: white;
+    width: 100vw;
+    min-height: 100vh;
 }
 
 .boxed {
-    border: 1.5px solid #aaa;
     width: 315px;
     margin: 10px;
-    background-color: #bababa;
+    background-color: white;
     display: inline-block;
     border-radius: 5px;
     padding-left: 5px;;

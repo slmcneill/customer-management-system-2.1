@@ -29,6 +29,7 @@ a{
   font-size:.8em;
 }
 
-#root{
-  width:fit-content;
+#root {
+  width: 100vw;
+  height: 100vh;
 }
