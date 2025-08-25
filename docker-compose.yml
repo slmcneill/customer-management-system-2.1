@@ -50,7 +50,7 @@ services:
     environment:
       - OLLAMA_HOST=http://ollama:11434
     restart: "no"
-    command: pull llama2
+    command: pull tinyllama
 
 volumes:
   ollama-data:
