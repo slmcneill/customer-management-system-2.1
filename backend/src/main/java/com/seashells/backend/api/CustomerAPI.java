@@ -47,17 +47,18 @@ public class CustomerAPI {
             return ResponseEntity.badRequest().build();
         }
 
-        // Generate a unique username
-        String baseUsername = newCustomer.getName().toLowerCase().replaceAll("\\s+", "");
-        String username = baseUsername;
-        int counter = 1;
-
-        while (repo.findByUserName(username).isPresent()) {
-            username = baseUsername + counter;
-            counter++;
+        // Use provided user_name if present, otherwise generate one
+        String username = newCustomer.getUserName();
+        if (username == null || username.isEmpty()) {
+            String baseUsername = newCustomer.getName().toLowerCase().replaceAll("\\s+", "");
+            username = baseUsername;
+            int counter = 1;
+            while (repo.findByUserName(username).isPresent()) {
+                username = baseUsername + counter;
+                counter++;
+            }
         }
-
-        newCustomer.setUserName(username);
+        newCustomer.setUserName(username); // Ensure user_name is set from payload
 
         newCustomer = repo.save(newCustomer);
 

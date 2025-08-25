@@ -133,18 +133,19 @@ export function lookupCustomerByName(username) {
 
 
 /* LOGIN REQUESTS */
-export async function registerUser( username, password, email) {
-  let url = authBaseUrl +"/register";
+export async function registerUser(name, username, password, email) {
+  let url = authBaseUrl + "/register";
   let customer = {
-    name: username,
+    name: name,
+    user_name: username,
     email: email,
     password: password
-  }
+  };
   let body = JSON.stringify(customer);
   var myInit = {
     method: 'POST',
     body: body,
-  headers: getHeaders(),
+    headers: getHeaders(),
     mode: 'cors'
   };
   try {

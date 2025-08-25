@@ -91,7 +91,7 @@ export function App(props) {
       <div className="search-container">
         <input
           type="text"
-          placeholder="Search by name, ID, or email..."
+          placeholder="Search by username, ID, or email..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="search-input"
