@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getJWTToken } from './restdb';
+import './LoginForm.css';
 
 export function LoginForm(props) {
   let [formData, setFormData] = useState({ username: "", password: "" });
@@ -36,29 +37,52 @@ export function LoginForm(props) {
   }
 
   return (
-    <form className='login'>
+    <div className='login'>
+
       <h4>Sign In</h4>
       {/* <p>Please enter your username and password to continue.</p>             */}
+      
+      <form>
+        <label htmlFor="username" className="input-label">Username</label>
+        <div className="text_area">
 
-    
-      Username:<br />
-      <input type="text" name="username"
-        value={formData.username}
-        onChange={handleInputChange} />
+        <input 
+          type="text" 
+          name="username"
+          placeholder="Enter Username"
+          value={formData.username}
+          className="text_input"
+          onChange={handleInputChange} 
+        />
+        </div>
 
-      <br />
+        <label htmlFor="password" className="input-label2">Password</label>
+        <div className="text_area">
+          <input 
+            type="password" 
+            name="password"
+            placeholder="Enter Password"
+            value={formData.password}
+            className="text_input"
+            onChange={handleInputChange} 
+          />
+        </div>
+        <div>
+          <button type="button" className="loginbutton" onClick={() => onLoginClick(formData)}>Login</button>
+        </div>
+        <div>
+          <a
+            href="#"
+            className="register-link"
+            onClick={e => { e.preventDefault(); onRegisterClick(formData); }}
+          >
+            Register
+          </a>
+        </div>
 
-      Password:<br />
-      <input type="password" name="password"
-        value={formData.password}
-        onChange={handleInputChange} />
-
-      <br /><br />
-      <button type="button" onClick={() => onLoginClick(formData)}>Login</button>
-      <button type="button" onClick={() => onRegisterClick(formData)}>Register</button>
-      <br />
-      <p>{status.message} </p>
-
-    </form>
+      </form>
+    </div>
   )
 }
+
+export default LoginForm;

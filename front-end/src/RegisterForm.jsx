@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { registerUser } from './restdb';
 import { useNavigate } from 'react-router-dom';
+import './RegisterForm.css';
 
 export function RegisterForm(props) {
 
