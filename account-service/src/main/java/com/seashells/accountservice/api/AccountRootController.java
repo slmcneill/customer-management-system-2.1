@@ -82,7 +82,9 @@ public class AccountRootController {
     }
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest) {
-        if (registerRequest.name == null || registerRequest.email == null || registerRequest.password == null) {
+        if (registerRequest.name == null || registerRequest.name.trim().isEmpty() ||
+            registerRequest.email == null || registerRequest.email.trim().isEmpty() ||
+            registerRequest.password == null || registerRequest.password.trim().isEmpty()) {
             return ResponseEntity.badRequest()
                     .contentType(MediaType.APPLICATION_JSON)
                     .body("{\"error\":\"Missing registration fields\"}");

@@ -10,6 +10,7 @@
   background: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   padding-top:1rem;
+  padding-bottom:2rem;
 }
 
 .customer-list-table tbody tr {
