@@ -9,7 +9,7 @@ body{
     justify-items: center;  
 }
 
-.login{
+.register{
     display: inline-block;
     background: #FFFFFF;
     position: center;
@@ -21,15 +21,15 @@ body{
     align-items: center;
 }
 
-.login h4{
+.register h4{
     font-family: 'Segoe UI', bold;
-    font-size: 35px;
+    font-size: 30px;
     margin-top: 5rem;
     margin-bottom: 1rem;
     color: #53858D;
 }
 
-.login form{
+.register form{
     display: inline-block;
     align-items: center;
     height: 45%;
@@ -37,7 +37,7 @@ body{
     margin-bottom: 170px;
 }
 
-.input-label {
+.register-username {
   display: block;
   font-family: 'Inter';
   font-size: 15px;
@@ -47,7 +47,7 @@ body{
   text-align: left;
 }
 
-.input-label2 {
+.register-email {
   display: block;
   font-family: 'Inter';
   font-size: 15px;
@@ -55,7 +55,18 @@ body{
   margin-bottom: 4px;
   margin-left: 8px;
   text-align: left;
-  margin-top:2rem;
+  margin-top:1rem;
+}
+
+.register-password {
+  display: block;
+  font-family: 'Inter';
+  font-size: 15px;
+  color: #35575c;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  text-align: left;
+  margin-top:1rem;
 }
 
 .text_area{
@@ -80,7 +91,7 @@ body{
   box-shadow: none;
 }
 
-.loginbutton{
+.register-button{
     width: 200px;
     height: 40px;
     border-radius: 30px;
@@ -94,19 +105,19 @@ body{
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
-.loginbutton:hover {
+.register-button:hover {
     background-color: #3c6a73;
   }
 
-.register-link {
-    color: #53858d;
-    font-family: 'Inter';
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400px;
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
-    text-decoration: underline;
+.back-link {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #53858D;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  z-index: 1000;
+  padding-top: 80px;
 }
-

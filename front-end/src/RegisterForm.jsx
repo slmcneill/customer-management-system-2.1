@@ -19,32 +19,61 @@ export function RegisterForm(props) {
     };
 
     return (
-        <form className='boxed'>
-            <h3>Register as a new user.</h3>
-            <p>Please enter a username and password to continue.</p>
+        <>
+        <a
+        href="#"
+        className="back-link"
+        onClick={e => { e.preventDefault(); navigate(-1); }}
+      >
+        &larr; Back
+      </a>
+        <div className='register'>
 
-            Username:<br />
-            <input type="text" name="username"
-                value={formData.username}
-                onChange={handleInputChange} />
+      <h4>Register as a New User</h4>
+      {/* <p>Please enter your username and password to continue.</p>             */}
+      
+      <form>
+        <label htmlFor="username" className="register-username">Username</label>
+        <div className="text_area">
 
-            <br />
+        <input 
+          type="text" 
+          name="username"
+          placeholder="Enter Username"
+          value={formData.username}
+          className="text_input"
+          onChange={handleInputChange} 
+        />
+        </div>
 
-            Password:<br />
-            <input type="password" name="password"
-                value={formData.password}
-                onChange={handleInputChange} />
+        <label htmlFor="email" className="register-email">Email</label>
+        <div className="text_area">
+          <input 
+            type="email" 
+            name="email"
+            placeholder="Enter Email"
+            value={formData.email}
+            className="text_input"
+            onChange={handleInputChange} 
+          />
+        </div>
 
-            <br />
-            Email:<br />
-            <input type="email" name="email"
-                value={formData.email}
-                onChange={handleInputChange} />
-
-            <br />
-            <br />
-            <button type="button" onClick={() => onRegisterClick(formData)}>Register</button>
-
-        </form>
+        <label htmlFor="password" className="register-password">Password</label>
+        <div className="text_area">
+          <input 
+            type="password" 
+            name="password"
+            placeholder="Enter Password"
+            value={formData.password}
+            className="text_input"
+            onChange={handleInputChange} 
+          />
+        </div>
+        <div>
+          <button type="button" className="register-button" onClick={() => onRegisterClick(formData)}>Register</button>
+        </div>
+      </form>
+    </div>
+        </>
     )
 }
