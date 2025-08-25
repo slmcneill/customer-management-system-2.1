@@ -6,7 +6,7 @@ import './RegisterForm.css';
 export function RegisterForm(props) {
 
     const navigate = useNavigate();
-    let [formData, setFormData] = useState({ username: "", password: "", email: "" });
+    let [formData, setFormData] = useState({ name: "", username: "", password: "", email: "" });
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -14,7 +14,7 @@ export function RegisterForm(props) {
     };
 
     const onRegisterClick = async (formData) => {     
-        const response = await registerUser(formData.username, formData.password, formData.email);
+        const response = await registerUser(formData.name, formData.username, formData.password, formData.email);
         navigate("/login");
     };
 
@@ -33,17 +33,16 @@ export function RegisterForm(props) {
       {/* <p>Please enter your username and password to continue.</p>             */}
       
       <form>
-        <label htmlFor="username" className="register-username">Username</label>
+        <label htmlFor="name" className="register-name">Username</label>
         <div className="text_area">
-
-        <input 
-          type="text" 
-          name="username"
-          placeholder="Enter Username"
-          value={formData.username}
-          className="text_input"
-          onChange={handleInputChange} 
-        />
+          <input 
+            type="text" 
+            name="name"
+            placeholder="Enter Username"
+            value={formData.name}
+            className="text_input"
+            onChange={handleInputChange} 
+          />
         </div>
 
         <label htmlFor="email" className="register-email">Email</label>

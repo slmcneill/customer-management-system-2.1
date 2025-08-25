@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './CustomerList.css';
 
@@ -24,7 +23,7 @@ export function CustomerList(params) {
         <thead className="table-header">
           <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>Username</th>
             <th>Email</th>
             <th>Password</th>
           </tr>
@@ -37,7 +36,7 @@ export function CustomerList(params) {
               onClick={() => params.handleListClick(item)}
             >
               <td>{item.id}</td>
-              <td>{item.name}</td>
+              <td>{item.user_name || item.userName}</td>
               <td>{item.email}</td>
               <td>{item.password}</td>
             </tr>

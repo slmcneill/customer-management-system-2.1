@@ -174,18 +174,19 @@ export async function sendChatMessage(message) {
 
 
 /* LOGIN REQUESTS */
-export async function registerUser( username, password, email) {
-  let url = authBaseUrl +"/register";
+export async function registerUser(name, username, password, email) {
+  let url = authBaseUrl + "/register";
   let customer = {
-    name: username,
+    name: name,
+    user_name: username,
     email: email,
     password: password
-  }
+  };
   let body = JSON.stringify(customer);
   var myInit = {
     method: 'POST',
     body: body,
-  headers: getHeaders(),
+    headers: getHeaders(),
     mode: 'cors'
   };
   try {
@@ -221,7 +222,7 @@ export async function getJWTToken(username, password) {
 
   const response = await callTokenService(customer);
   if (!response.ok) {
-    return { "status": "error", "message": "Login failed: " + response.status };
+    return { "status": "error", "message": "Login failed: " + "Invalid Credentials" };
   }
 
   const data = await response.json(); // parse JSON response

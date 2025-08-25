@@ -9,13 +9,13 @@ export function CustomerAddUpdateForm(params) {
           <table id="customer-add-update" >
             <tbody>
               <tr>
-                <td className={'label'} >Name:</td>
+                <td className={'label'} >Username:</td>
                 <td><input
                   type="text"
                   name="name"
                   onChange={(e) => params.handleInputChange(e)}
                   value={params.formObject.name}
-                  placeholder="Customer Name"
+                  placeholder="Customer Username"
                   required /></td>
               </tr>
               <tr>

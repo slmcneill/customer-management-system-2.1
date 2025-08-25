@@ -44,6 +44,7 @@ public class AccountRootController {
 
     public static class RegisterRequest {
         public String name;
+        public String user_name;
         public String email;
         public String password;
     }
@@ -87,12 +88,12 @@ public class AccountRootController {
                     .body("{\"error\":\"Missing registration fields\"}");
         }
 
-        Customer newCustomer = new Customer(
-                registerRequest.name,
-                registerRequest.email,
-                registerRequest.password,
-                registerRequest.name // user_name
-        );
+    Customer newCustomer = new Customer(
+        registerRequest.name,
+        registerRequest.email,
+        registerRequest.password,
+        registerRequest.user_name // user_name
+    );
 
         try {
             HttpHeaders headers = new HttpHeaders();
