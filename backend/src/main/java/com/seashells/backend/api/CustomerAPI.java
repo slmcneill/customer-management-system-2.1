@@ -3,6 +3,7 @@ package com.seashells.backend.api;
 import java.net.URI;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,8 +36,13 @@ public class CustomerAPI {
     }
 
     @GetMapping("/{id}")
-    public Optional<Customer> getCustomer(@PathVariable("id") long id) {
-        return repo.findById(id);
+    public ResponseEntity<Customer> getCustomer(@PathVariable("id") long id) {
+        Optional<Customer> customerOpt = repo.findById(id);
+        if (customerOpt.isPresent()) {
+            return ResponseEntity.ok(customerOpt.get());
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @PostMapping
