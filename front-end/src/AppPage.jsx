@@ -97,20 +97,12 @@ export function App(props) {
           className="search-input"
         />
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <button
-          className="add-button"
-          onClick={() => navigate('/addcustomer')}
-        >
-          Add Customer
-        </button>
-      </div>
+      <CustomerAddUpdateForm {...pvars} />
       <CustomerList
         customers={filteredCustomers}
         formObject={formObject}
         handleListClick={handleListClick}
       />
-      <CustomerAddUpdateForm {...pvars} />
     </div>
   );
 }

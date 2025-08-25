@@ -38,9 +38,9 @@ export function CustomerAddUpdateForm(params) {
               </tr>
               <tr className="button-bar">
                 <td colSpan="2">
-                  <input type="button" value="Delete" onClick={params.onDeleteClick} />
-                  <input type="button" value="Save" onClick={params.onSaveClick} />
-                  <input type="button" value="Cancel" onClick={params.onCancelClick} />
+                  <input type="button" className="button-bar-button" value="Delete" onClick={params.onDeleteClick} />
+                  <input type="button" className="button-bar-button" value="Save" onClick={params.onSaveClick} />
+                  <input type="button" className="button-bar-button" value="Cancel" onClick={params.onCancelClick} />
                 </td>
               </tr>
             </tbody>
