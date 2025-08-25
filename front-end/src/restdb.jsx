@@ -181,7 +181,7 @@ export async function getJWTToken(username, password) {
 
   const response = await callTokenService(customer);
   if (!response.ok) {
-    return { "status": "error", "message": "Login failed: " + response.status };
+    return { "status": "error", "message": "Login failed: " + "Invalid Credentials" };
   }
 
   const data = await response.json(); // parse JSON response
