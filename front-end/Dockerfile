@@ -7,6 +7,7 @@ COPY . .
 
 ARG VITE_CUSTOMER_URL=http://backend:8080/api/customers
 ARG VITE_AUTH_URL=http://localhost:8081/account
+ARG VITE_CHAT_API=http://backend:8080/api/chat
 
 RUN npm run build
 FROM nginx:alpine

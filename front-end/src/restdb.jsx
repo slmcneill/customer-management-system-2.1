@@ -1,6 +1,8 @@
 // servers must allow CORS requests for these urls to work
 const custBaseURL = 'http://localhost:8080/api/customers';
 const authBaseUrl = 'http://localhost:8081/account';
+const chatBaseURL =  import.meta.env.VITE_CHAT_API || 'http://localhost:8082/chat';
+
 
 
 // Use localStorage to persist JWT token
@@ -129,6 +131,45 @@ export function lookupCustomerByName(username) {
     }
   };
   lookupCustomer(custBaseURL + "/byname");
+}
+export async function sendChatMessage(message) {
+  // Create headers with Content-Type explicitly set
+  const headers = new Headers();
+  headers.append('Content-Type', 'application/json');
+
+  // Optionally append Authorization if token exists
+  const token = localStorage.getItem('jwt_token');
+  if (token) {
+    headers.append('Authorization', 'Bearer ' + token);
+  }
+
+  const myInit = {
+    method: 'POST',
+    body: JSON.stringify({ question: message }),
+    headers: headers,
+    mode: 'cors',
+  };
+
+  try {
+    const response = await fetch(chatBaseURL, myInit);
+    if (!response.ok) {
+      if (response.status === 401) {
+        throw new Error('Please log in to use the chat service.');
+      }
+      throw new Error(`Chat service error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return {
+      status: 'success',
+      response: data.response || "Sorry, I couldn't process your request."
+    };
+  } catch (error) {
+    return {
+      status: 'error',
+      response: error.message || "Sorry, I'm having trouble connecting to the chat service."
+    };
+  }
 }
 
 

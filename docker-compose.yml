@@ -1,11 +1,13 @@
-version: "3.9"
 services:
   frontend:
     build:
       context: ./front-end
       args:
         VITE_CUSTOMER_URL: "http://backend:8080/api/customers"
-        VITE_AUTH_URL: "http://localhost:8081/account"
+        VITE_AUTH_URL: "http://account-service:8081/account"
+        VITE_CHAT_API: "http://backend:8080/api/chat"
+    environment:
+      - VITE_CHAT_API=http://backend:8080/api/chat
     ports:
       - "3000:80"
     depends_on:
@@ -16,8 +18,11 @@ services:
     build: ./backend
     ports:
       - "8080:8080"
-    volumes:
-      - ~/.gradle:/root/.gradle
+    environment:
+      - OLLAMA_URL=http://ollama:11434
+      - CUSTOMER_API_URL=http://backend:8080/api/customers
+    depends_on:
+      - ollama
 
   account-service:
     build: ./account-service
@@ -27,3 +32,25 @@ services:
       - VITE_CUSTOMER_URL=http://backend:8080/api/customers
     depends_on:
       - backend
+
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+
+  model-puller:
+    image: ollama/ollama
+    depends_on:
+      - ollama
+    volumes:
+      - ollama-data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    restart: "no"
+    command: pull llama2
+
+volumes:
+  ollama-data:
