@@ -1,5 +1,6 @@
 package com.seashells.accountservice.api;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,8 @@ public class AccountRootController {
 
     private final RestTemplate restTemplate;
     private final TokenService tokenService;
-    private final String CUSTOMER_API_URL = "http://localhost:8080/api/customers";
+    @Value("${VITE_CUSTOMER_URL:http://localhost:8080/api/customers}")
+    private String CUSTOMER_API_URL;
 
     public AccountRootController(RestTemplate restTemplate, TokenService tokenService) {
         this.restTemplate = restTemplate;

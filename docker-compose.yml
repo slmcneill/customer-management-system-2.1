@@ -1,7 +1,11 @@
-
+version: "3.9"
 services:
-  front-end:
-    build: ./front-end
+  frontend:
+    build:
+      context: ./front-end
+      args:
+        VITE_CUSTOMER_URL: "http://backend:8080/api/customers"
+        VITE_AUTH_URL: "http://localhost:8081/account"
     ports:
       - "3000:80"
     depends_on:
@@ -10,14 +14,16 @@ services:
 
   backend:
     build: ./backend
+    ports:
+      - "8080:8080"
     volumes:
       - ~/.gradle:/root/.gradle
-    ports:
-      - "8080:8080"   # host:container
 
   account-service:
     build: ./account-service
-    volumes:
-      - ~/.gradle:/root/.gradle
     ports:
-      - "8081:8080"   # host 8081 -> container 8080
+      - "8081:8081"
+    environment:
+      - VITE_CUSTOMER_URL=http://backend:8080/api/customers
+    depends_on:
+      - backend
