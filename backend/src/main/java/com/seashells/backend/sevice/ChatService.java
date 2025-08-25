@@ -71,7 +71,7 @@ public class ChatService {
             """, customerData, question);
 
         Map<String, Object> requestBody = Map.of(
-                "model", "llama2",
+                "model", "tinyllama",
                 "prompt", prompt,
                 "stream", false
         );
