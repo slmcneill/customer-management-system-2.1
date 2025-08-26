@@ -10,7 +10,7 @@
 /* optional positioning overrides if needed */
 .shell-top-left {
   top: 10px;
-  left: 10px;
+  left: -50px;
 }
 
 .shell-top-right {

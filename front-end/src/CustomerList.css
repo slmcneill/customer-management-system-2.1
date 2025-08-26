@@ -1,218 +1,117 @@
-/* Table Styling */
-.customer-list-table tbody tr:hover {
-    background-color: #e0e0e0;
-}
-
 .customer-list-table {
-  border-collapse: collapse;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  background: white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  padding-top:1rem;
+  border-collapse: collapse;
+  margin-top: 16px;
 }
 
-.customer-list-table tbody tr {
-    background-color: white;
-    transition: background 0.2s;
-    cursor: pointer;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.customer-list-table tbody tr:first-child {
-    border-top: 1px solid #e0e0e0;
-}
-
-.customer-list-table thead {
-    font-weight: bold; 
-    background: white;
+.customer-list-table th,
+.customer-list-table td {
+  border: 1px solid #53858D;
+  padding: 8px;
+  text-align: left;
 }
 
 .customer-list-table th {
-    padding: 12px;
-    color: #333;
-    font-size: 16px;
+  background-color: #53858D;
+  font-weight: bold;
 }
 
-.customer-list-table td{
-    padding: 15px;
-    text-align: center;
-    color: #333;
-    font-size: 13px;
-}
-
-/* Icon buttons */
-.icon-button {
-  background: none;
-  border: none;
+.customer-list-table .icon-button {
   cursor: pointer;
   color: #53858D;
-  font-size: 1rem;
-  padding: 0;
-}
-.icon-button:hover {
-  color: #2c5d65;
+  transition: color 0.2s;
 }
 
-/* Generic buttons */
-.btn {
-  border: 1px solid #ccc;
-  background: #fff;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
+.customer-list-table .icon-button:hover {
+  color: #000;
 }
-.btn:hover { background: #f7f7f7; }
-.btn:disabled { opacity: 0.6; cursor: not-allowed; }
-.btn-primary {
-  background: #2563eb; /* blue-600 */
-  color: #fff;
-  border-color: #2563eb;
-}
-.btn-primary:hover { background: #1d4ed8; }
 
-/* Password cell */
-.password-cell {
+/* Make Actions cell use flex to align icons side by side */
+.customer-list-table td:last-child {
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 8px;
-}
-.password-toggle {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 4px;
-}
-.password-toggle:hover { opacity: 0.8; }
-.password-text { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-
-/* Add Customer button */
-.add-btn {
-  background-color: #53858D;
-  color: white;
-  padding: 8px 18px;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.add-btn:hover {
-  background-color: #35575c;
-}
-
-/* Modal backdrop */
-.modal-backdrop, .modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.35);
-  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 16px;
-  z-index: 2000;
 }
 
-/* Modal container */
-.modal, .modal-content {
-  background: #fff;
-  width: 100%;
-  max-width: 520px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.2);
-  overflow: hidden;
-  padding: 20px 30px;
-  position: relative;
-}
-
-/* Modal close button */
-.modal-close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* Modal header, body, footer */
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 18px;
-  border-bottom: 1px solid #eee;
-}
-.modal-body { padding: 16px 18px; }
-.modal-footer {
-  display: flex; justify-content: flex-end; gap: 8px;
-  padding: 12px 18px; border-top: 1px solid #eee;
-}
-
-/* Form inside modal */
-.form-grid { display: grid; gap: 12px; }
-.form-field label { display: block; margin-bottom: 4px; font-weight: 600; }
-.form-field input {
-  width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;
-}
-.form-field input.invalid { border-color: #dc2626; }
-.error { color: #dc2626; font-size: 12px; margin-top: 4px; }
-.server-error {
-  margin-top: 6px; padding: 10px; background: #fef2f2; color: #991b1b; border-radius: 8px;
-}
-.hint { color: #6b7280; font-size: 12px; margin-top: 8px; }
-
-/* Pagination buttons */
-.button-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin-top: 12px;
-}
-.button-bar button {
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-.button-bar button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+/* Pagination */
 .pagination-container {
   display: flex;
   justify-content: center;
-  margin-top: 16px;
-  gap: 8px;
+  margin: 16px 0;
   flex-wrap: wrap;
+  gap: 4px;
 }
 
 .pagination-btn {
-  background-color: #ffffff;
-  border: 1px solid #d1d5db;
-  color: #374151;
   padding: 6px 12px;
-  border-radius: 6px;
+  margin: 2px;
+  border: 1px solid #ddd;
+  background-color: #fff;
   cursor: pointer;
-  transition: all 0.2s;
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background-color: #f3f4f6;
-  border-color: #9ca3af;
+  background-color: #53858D;
+  color: #fff;
 }
 
 .pagination-btn:disabled {
   opacity: 0.5;
-  cursor: default;
+  cursor: not-allowed;
 }
 
 .pagination-btn.active {
-  background-color: #3b82f6;
-  color: white;
-  border-color: #2563eb;
+  background-color: #53858D;
+  color: #fff;
 }
 
+/* Password toggle */
+.password-toggle {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal-footer {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.add-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #53858D;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+  background-color: #53858D;
+}

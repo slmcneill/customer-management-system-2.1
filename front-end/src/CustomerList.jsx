@@ -6,7 +6,6 @@ import './CustomerList.css';
 
 export default function CustomerListPage() {
   const [customers, setCustomers] = useState([]);
-  const [selectedCustomerId, setSelectedCustomerId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [customersPerPage] = useState(5);
   const [visiblePasswords, setVisiblePasswords] = useState({});
@@ -16,6 +15,7 @@ export default function CustomerListPage() {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [formCustomer, setFormCustomer] = useState({ id: null, name: '', email: '', password: '' });
   const [userName, setUserName] = useState('admin');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetchCustomers();
@@ -79,9 +79,20 @@ export default function CustomerListPage() {
     .catch(console.error);
   };
 
+  // Filter customers based on search query
+  const filteredCustomers = customers.filter((customer) => {
+    const query = searchQuery.toLowerCase();
+    return (
+      customer.name.toLowerCase().includes(query) ||
+      customer.email.toLowerCase().includes(query) ||
+      String(customer.id).includes(query)
+    );
+  });
+
+  // Pagination
   const indexOfLastCustomer = currentPage * customersPerPage;
   const indexOfFirstCustomer = indexOfLastCustomer - customersPerPage;
-  const currentCustomers = customers.slice(indexOfFirstCustomer, indexOfLastCustomer);
+  const currentCustomers = filteredCustomers.slice(indexOfFirstCustomer, indexOfLastCustomer);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -98,10 +109,23 @@ export default function CustomerListPage() {
         <h3>Welcome, {userName}!</h3>
       </div>
 
+      {/* Search Bar */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search by username, email, or ID..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-input"
+        />
+      </div>
+
+      {/* Add Button */}
       <div className="add-button-container">
         <button className="add-btn" onClick={handleAddCustomer}>Add Customer</button>
       </div>
 
+      {/* Customer Table */}
       <table className="customer-list-table">
         <thead>
           <tr>
@@ -138,7 +162,7 @@ export default function CustomerListPage() {
       {/* Pagination */}
       <Pagination
         customersPerPage={customersPerPage}
-        totalCustomers={customers.length}
+        totalCustomers={filteredCustomers.length}
         paginate={paginate}
         currentPage={currentPage}
       />
