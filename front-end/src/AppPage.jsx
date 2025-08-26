@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { getAll, post, put, deleteById } from './restdb.jsx';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
-import { CustomerList } from './CustomerList.jsx';
+import CustomerList  from './CustomerList.jsx';
 import { CustomerAddUpdateForm } from './CustomerAddUpdateForm.jsx';
 import { Account } from './Account.jsx';
 import './AppPage.css';
-import { Chatbot } from './Chatbot.jsx';
+
 export function App(props) {
   let blankCustomer = { "id": -1, "name": "", "email": "", "password": "" };
   const [customers, setCustomers] = useState([]);
@@ -103,7 +103,6 @@ export function App(props) {
         formObject={formObject}
         handleListClick={handleListClick}
       />
-      <Chatbot/>
     </div>
   );
 }

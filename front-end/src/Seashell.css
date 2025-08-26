@@ -1,0 +1,35 @@
+.seashell {
+  position: absolute;
+  width: 5%;   /* 👈 reduce size */
+  height: auto;  /* keeps aspect ratio */
+  opacity: 0.7;
+  animation: float 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* optional positioning overrides if needed */
+.shell-top-left {
+  top: 10px;
+  left: 10px;
+}
+
+.shell-top-right {
+  top: 10px;
+  right: 10px;
+}
+
+.shell-bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.shell-bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
